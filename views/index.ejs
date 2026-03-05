@@ -14,16 +14,18 @@
                 <th>Action</th>
             </tr>
             <tr>
-                <th>Test title</th>
-                <th>Test Description</th>
-                <th>create time</th>
-                <th>update time</th>
+                <% for(let i = 0 ; i < todos.length ; i++) { %>
+                <th><%=todos[i].title %></th>
+                <th><%=todos[i].desc %></th>
+                <th><%= moment(todos[i].createdAt).format("MMM DD , YYYY,HH:mm:ss") %></th>
+                <th><%=  moment(todos[i].updatedAt).format("MMM DD , YYYY,HH:mm:ss") %></th>
                 <td>
-                    <a href="/update-todo" class="btn">edit</a>
-                    <a href="/delete-todo" class="btn">delete</a>
+                    <a href="/update-todo?id=<%=todos[i]._id%>" class="btn">edit</a>
+                    <a href="/delete-todo?id=<%=todos[i]._id%>" class="btn">delete</a>
 
                 </td>
             </tr>
+            <% } %>
         </table>
 
 
